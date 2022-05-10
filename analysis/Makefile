@@ -15,6 +15,7 @@ LDFLAGS     += `root-config --libs`
 LDFLAGS     += `fastjet-config --libs --plugins`
 #LDFLAGS     += -L$(PYTHIA8)/lib -lpythia8
 LDFLAGS     += -lRecursiveTools
+LDFLAGS	    += -lLundPlane
 
 IDIR = ../
 DEPS = treeUtilities.h

@@ -12,6 +12,7 @@ using std::vector;
 #include "fastjet/ClusterSequence.hh"
 #include "fastjet/contrib/Recluster.hh"
 #include "fastjet/contrib/SoftDrop.hh"
+#include "fastjet/contrib/LundGenerator.hh"
 
 #include "TFile.h"
 #include "TH1.h"
@@ -269,7 +270,17 @@ int main(int argc, char* argv[])
 			  // Fill Soft-Drop Jet Histograms
 			  jSC[jV][flatIndex].fillSoftJetCollection(jetsVec[jV][jn],sd_jet,zVals[zcut],bVals[beta]);
 			}
-		    }			  
+		    }
+
+		  // Test Lund
+		  contrib::LundGenerator lund;
+		  cout << lund.description() << endl;
+
+		  vector<contrib::LundDeclustering> declusts = lund(jetsVec[jV][jn]);
+
+		  cout << declusts.size() << endl;
+
+			  
 		} // End Loop Through Jets
 	    } // End Loop Through Jet Types
 	  
